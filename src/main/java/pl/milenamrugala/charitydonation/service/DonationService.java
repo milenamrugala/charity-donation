@@ -12,10 +12,12 @@ public class DonationService {
     private final DonationRepository donationRepository;
 
     public DonationService(DonationRepository donationRepository) {
+
         this.donationRepository = donationRepository;
     }
 
     public List<Donation> getAllDonations() {
+
         return donationRepository.findAll();
     }
 
@@ -29,6 +31,19 @@ public class DonationService {
     }
 
     public void deleteDonation(Long id) {
+
         donationRepository.deleteById(id);
+    }
+
+    public int getQuantityOfBags() {
+        try {
+            return donationRepository.getQuantityOfBags();
+        } catch (NullPointerException e) {
+            return 0;
+        }
+    }
+
+    public int getQuantityOfDonations() {
+        return donationRepository.getQuantityOfDonations();
     }
 }
