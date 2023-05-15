@@ -3,6 +3,7 @@ package pl.milenamrugala.charitydonation.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import pl.milenamrugala.charitydonation.model.Category;
 import pl.milenamrugala.charitydonation.model.Donation;
 import pl.milenamrugala.charitydonation.model.Institution;
@@ -33,5 +34,16 @@ public class DonationController {
         model.addAttribute("institutions", institutions);
         model.addAttribute("donation", new Donation());
         return "form";
+    }
+
+    @PostMapping("/donation")
+    public String donationAction (Donation donation) {
+        donationService.saveDonation(donation);
+        return "redirect:/confirmation";
+    }
+
+    @GetMapping("/confirmation")
+    public String confirmation() {
+        return "form-confirmation";
     }
 }
