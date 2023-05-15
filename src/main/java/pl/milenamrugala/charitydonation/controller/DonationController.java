@@ -37,7 +37,7 @@ public class DonationController {
     }
 
     @PostMapping("/donation")
-    public String donationAction (Donation donation) {
+    public String donationAction(Donation donation) {
         donationService.saveDonation(donation);
         return "redirect:/confirmation";
     }
