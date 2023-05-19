@@ -1,11 +1,13 @@
 package pl.milenamrugala.charitydonation.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import pl.milenamrugala.charitydonation.model.Institution;
 import pl.milenamrugala.charitydonation.model.User;
 import pl.milenamrugala.charitydonation.repository.UserRepository;
 
+import javax.persistence.EntityNotFoundException;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -35,4 +37,22 @@ public class UserService {
         }
         return false;
     }
+
+    public List<User> findAll() {
+        return userRepository.findAll();
+    }
+
+    public User getUserById(Long id) {
+        return userRepository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("User not found with id: " + id));
+    }
+
+    public User saveUser(User user) {
+        return userRepository.save(user);
+    }
+
+    public void deleteUserById(Long id) {
+        userRepository.deleteById(id);
+    }
+
 }
