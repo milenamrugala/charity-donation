@@ -1,4 +1,5 @@
-The primary goal of this project is to establish a platform that facilitates the donation of unwanted items to reliable institutions. 
+The project aims to create a space where everyone can donate their unnecessary belongings to trusted institutions.
+The project is not my original idea. It was a part of the Portfolio Lab on the course. 
 
 User view:
 
